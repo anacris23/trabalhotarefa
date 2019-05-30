@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import {
   View, Text, ScrollView, TouchableOpacity,
 } from 'react-native';
-import { write } from 'fs';
 import api from '../../services/api';
 // import { Container } from './styles';
 
@@ -27,7 +26,7 @@ export default class Main extends Component {
     this.componentDidMount();
   };
 
-  //= {() => this.updateStatus(task._id, task.completed)
+
   render() {
     const { data } = this.state;
     return (
@@ -37,32 +36,35 @@ export default class Main extends Component {
             flex: 1,
             justifyContent: 'flex-start',
             alignItems: 'center',
-            backgroundColor: '#b0c4de',
+            backgroundColor: '#F5F5F5',
           }}
         >
           <Text
             style={{
               fontSize: 40,
-              color: 'write',
+              color: '#191970',
               margin: 10,
               fontWeight: 'bold',
+              marginBottom: 30,
             }}
           >
-            Tarefas
+            Lista de tarefas
           </Text>
-
+          
           {data.map(task => (!task.completed ? (
             <TouchableOpacity key={task._id} onPress={() => this.updateCompleted(task._id)}>
               <Text
                 style={{
-                  fontSize: 35,
-
+                  fontSize: 20,
+                  borderWidth: 2,
+                  borderRadius: 10,
                   textAlign: 'center',
                   margin: 5,
-                  color: 'red',
+                  color: '#4B0082',
                   fontWeight: 'bold',
                 }}
               >
+
                 {task.task}
               </Text>
             </TouchableOpacity>
@@ -70,7 +72,10 @@ export default class Main extends Component {
             <TouchableOpacity key={task._id} onPress={() => this.updateNotCompleted(task._id)}>
               <Text
                 style={{
-                  fontSize: 35,
+                  fontSize: 20,
+                  borderWidth: 2,
+                  borderRadius: 10,
+                  borderColor: 'black',
                   textAlign: 'center',
                   textDecorationLine: 'line-through',
                   margin: 5,
